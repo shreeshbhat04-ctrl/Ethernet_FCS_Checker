@@ -1,0 +1,4 @@
+- cell: ethernet_fcs_checker
+  inout: []
+  input: []
+  output: []

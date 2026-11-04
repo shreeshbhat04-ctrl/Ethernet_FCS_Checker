@@ -1,0 +1,361 @@
+VERSION 5.7 ;
+  NOWIREEXTENSIONATPIN ON ;
+  DIVIDERCHAR "/" ;
+  BUSBITCHARS "[]" ;
+MACRO ethernet_fcs_checker
+  CLASS BLOCK ;
+  FOREIGN ethernet_fcs_checker ;
+  ORIGIN 0.000 0.000 ;
+  SIZE 140.455 BY 151.175 ;
+  PIN VGND
+    DIRECTION INOUT ;
+    USE GROUND ;
+    PORT
+      LAYER met4 ;
+        RECT 24.340 10.640 25.940 138.960 ;
+    END
+  END VGND
+  PIN VPWR
+    DIRECTION INOUT ;
+    USE POWER ;
+    PORT
+      LAYER met4 ;
+        RECT 21.040 10.640 22.640 138.960 ;
+    END
+  END VPWR
+  PIN clk
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.852000 ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 132.640 4.000 133.240 ;
+    END
+  END clk
+  PIN data_in[0]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met2 ;
+        RECT 93.470 147.175 93.750 151.175 ;
+    END
+  END data_in[0]
+  PIN data_in[1]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.426000 ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 95.240 4.000 95.840 ;
+    END
+  END data_in[1]
+  PIN data_in[2]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met3 ;
+        RECT 136.455 88.440 140.455 89.040 ;
+    END
+  END data_in[2]
+  PIN data_in[3]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met2 ;
+        RECT 96.690 147.175 96.970 151.175 ;
+    END
+  END data_in[3]
+  PIN data_in[4]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met2 ;
+        RECT 80.590 147.175 80.870 151.175 ;
+    END
+  END data_in[4]
+  PIN data_in[5]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.213000 ;
+    PORT
+      LAYER met2 ;
+        RECT 70.930 147.175 71.210 151.175 ;
+    END
+  END data_in[5]
+  PIN data_in[6]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 115.640 4.000 116.240 ;
+    END
+  END data_in[6]
+  PIN data_in[7]
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.247500 ;
+    PORT
+      LAYER met2 ;
+        RECT 67.710 147.175 67.990 151.175 ;
+    END
+  END data_in[7]
+  PIN fcs_error
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 136.455 54.440 140.455 55.040 ;
+    END
+  END fcs_error
+  PIN fcs_valid
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 136.455 57.840 140.455 58.440 ;
+    END
+  END fcs_valid
+  PIN frame_len[0]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 74.150 0.000 74.430 4.000 ;
+    END
+  END frame_len[0]
+  PIN frame_len[10]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 96.690 0.000 96.970 4.000 ;
+    END
+  END frame_len[10]
+  PIN frame_len[11]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 103.130 0.000 103.410 4.000 ;
+    END
+  END frame_len[11]
+  PIN frame_len[12]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 119.230 0.000 119.510 4.000 ;
+    END
+  END frame_len[12]
+  PIN frame_len[13]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 136.455 34.040 140.455 34.640 ;
+    END
+  END frame_len[13]
+  PIN frame_len[14]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 136.455 51.040 140.455 51.640 ;
+    END
+  END frame_len[14]
+  PIN frame_len[15]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 136.455 44.240 140.455 44.840 ;
+    END
+  END frame_len[15]
+  PIN frame_len[1]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 44.240 4.000 44.840 ;
+    END
+  END frame_len[1]
+  PIN frame_len[2]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met3 ;
+        RECT 0.000 30.640 4.000 31.240 ;
+    END
+  END frame_len[2]
+  PIN frame_len[3]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 29.070 0.000 29.350 4.000 ;
+    END
+  END frame_len[3]
+  PIN frame_len[4]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 45.170 0.000 45.450 4.000 ;
+    END
+  END frame_len[4]
+  PIN frame_len[5]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 64.490 0.000 64.770 4.000 ;
+    END
+  END frame_len[5]
+  PIN frame_len[6]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 54.830 0.000 55.110 4.000 ;
+    END
+  END frame_len[6]
+  PIN frame_len[7]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 70.930 0.000 71.210 4.000 ;
+    END
+  END frame_len[7]
+  PIN frame_len[8]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 87.030 0.000 87.310 4.000 ;
+    END
+  END frame_len[8]
+  PIN frame_len[9]
+    DIRECTION OUTPUT ;
+    USE SIGNAL ;
+    ANTENNADIFFAREA 0.445500 ;
+    PORT
+      LAYER met2 ;
+        RECT 80.590 0.000 80.870 4.000 ;
+    END
+  END frame_len[9]
+  PIN in_eop
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
+    PORT
+      LAYER met2 ;
+        RECT 90.250 0.000 90.530 4.000 ;
+    END
+  END in_eop
+  PIN in_sop
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
+    PORT
+      LAYER met2 ;
+        RECT 32.290 0.000 32.570 4.000 ;
+    END
+  END in_sop
+  PIN in_valid
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
+    PORT
+      LAYER met2 ;
+        RECT 116.010 147.175 116.290 151.175 ;
+    END
+  END in_valid
+  PIN rst
+    DIRECTION INPUT ;
+    USE SIGNAL ;
+    ANTENNAGATEAREA 0.196500 ;
+    PORT
+      LAYER met2 ;
+        RECT 22.630 0.000 22.910 4.000 ;
+    END
+  END rst
+  OBS
+      LAYER nwell ;
+        RECT 5.330 10.795 134.970 138.910 ;
+      LAYER li1 ;
+        RECT 5.520 10.795 134.780 138.805 ;
+      LAYER met1 ;
+        RECT 0.530 10.640 134.780 138.960 ;
+      LAYER met2 ;
+        RECT 0.550 146.895 67.430 147.970 ;
+        RECT 68.270 146.895 70.650 147.970 ;
+        RECT 71.490 146.895 80.310 147.970 ;
+        RECT 81.150 146.895 93.190 147.970 ;
+        RECT 94.030 146.895 96.410 147.970 ;
+        RECT 97.250 146.895 115.730 147.970 ;
+        RECT 116.570 146.895 133.310 147.970 ;
+        RECT 0.550 4.280 133.310 146.895 ;
+        RECT 0.550 4.000 22.350 4.280 ;
+        RECT 23.190 4.000 28.790 4.280 ;
+        RECT 29.630 4.000 32.010 4.280 ;
+        RECT 32.850 4.000 44.890 4.280 ;
+        RECT 45.730 4.000 54.550 4.280 ;
+        RECT 55.390 4.000 64.210 4.280 ;
+        RECT 65.050 4.000 70.650 4.280 ;
+        RECT 71.490 4.000 73.870 4.280 ;
+        RECT 74.710 4.000 80.310 4.280 ;
+        RECT 81.150 4.000 86.750 4.280 ;
+        RECT 87.590 4.000 89.970 4.280 ;
+        RECT 90.810 4.000 96.410 4.280 ;
+        RECT 97.250 4.000 102.850 4.280 ;
+        RECT 103.690 4.000 118.950 4.280 ;
+        RECT 119.790 4.000 133.310 4.280 ;
+      LAYER met3 ;
+        RECT 0.525 133.640 136.455 138.885 ;
+        RECT 4.400 132.240 136.455 133.640 ;
+        RECT 0.525 116.640 136.455 132.240 ;
+        RECT 4.400 115.240 136.455 116.640 ;
+        RECT 0.525 96.240 136.455 115.240 ;
+        RECT 4.400 94.840 136.455 96.240 ;
+        RECT 0.525 89.440 136.455 94.840 ;
+        RECT 0.525 88.040 136.055 89.440 ;
+        RECT 0.525 58.840 136.455 88.040 ;
+        RECT 0.525 57.440 136.055 58.840 ;
+        RECT 0.525 55.440 136.455 57.440 ;
+        RECT 0.525 54.040 136.055 55.440 ;
+        RECT 0.525 52.040 136.455 54.040 ;
+        RECT 0.525 50.640 136.055 52.040 ;
+        RECT 0.525 45.240 136.455 50.640 ;
+        RECT 4.400 43.840 136.055 45.240 ;
+        RECT 0.525 35.040 136.455 43.840 ;
+        RECT 0.525 33.640 136.055 35.040 ;
+        RECT 0.525 31.640 136.455 33.640 ;
+        RECT 4.400 30.240 136.455 31.640 ;
+        RECT 0.525 10.715 136.455 30.240 ;
+  END
+END ethernet_fcs_checker
+END LIBRARY
+

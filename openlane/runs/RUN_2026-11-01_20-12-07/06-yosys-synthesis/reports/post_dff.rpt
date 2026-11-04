@@ -1,0 +1,42 @@
+122. Printing statistics.
+
+=== ethernet_fcs_checker ===
+
+   Number of wires:               1092
+   Number of wire bits:           1359
+   Number of public wires:          31
+   Number of public wire bits:     282
+   Number of ports:                 10
+   Number of port bits:             32
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1336
+     $_ANDNOT_                     218
+     $_AND_                          6
+     $_MUX_                        244
+     $_NAND_                        39
+     $_NOR_                         52
+     $_NOT_                        115
+     $_ORNOT_                       14
+     $_OR_                         171
+     $_XNOR_                        21
+     $_XOR_                        220
+     sky130_fd_sc_hd__dfrtp_2       44
+     sky130_fd_sc_hd__dfstp_2       32
+     sky130_fd_sc_hd__dfxtp_2      160
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+   Chip area for module '\ethernet_fcs_checker': 5400.179200
+     of which used for sequential elements: 5400.179200 (100.00%)
+

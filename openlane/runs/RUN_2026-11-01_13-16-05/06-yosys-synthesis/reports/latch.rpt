@@ -1,0 +1,7 @@
+
+15. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:62$1.$result' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$10'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:62$2.$result' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$10'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:62$2.d' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$10'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:62$2.c' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$10'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:62$2.n' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$10'.

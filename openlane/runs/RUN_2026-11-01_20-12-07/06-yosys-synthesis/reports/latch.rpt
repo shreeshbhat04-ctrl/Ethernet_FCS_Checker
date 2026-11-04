@@ -1,0 +1,8 @@
+
+16. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$1.$result' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$2.$result' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$2.d' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$2.c' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$2.n' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$mem2reg_rd$\fifo_mem$/workspace/rtl/async_fifo.v:47$242_DATA' from process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:0$261'.

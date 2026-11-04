@@ -1,0 +1,16 @@
+{
+  "DESIGN_NAME": "ethernet_fcs_checker",
+  "VERILOG_FILES": [
+    "dir::../rtl/ethernet_fcs_checker.v",
+    "dir::../rtl/async_fifo.v"
+  ],
+  "CLOCK_PORT": "clk",
+  "CLOCK_PERIOD": 10.0,
+  "PDK": "sky130A",
+  "STD_CELL_LIBRARY": "sky130_fd_sc_hd",
+  "FP_CORE_UTIL": 35,
+  "PL_TARGET_DENSITY_PCT": 45,
+  "RUN_LVS": true,
+  "RUN_MAGIC_DRC": true,
+  "RUN_KLAYOUT_DRC": false
+}

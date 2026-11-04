@@ -1,0 +1,1397 @@
+
+ /----------------------------------------------------------------------------\
+ |  yosys -- Yosys Open SYnthesis Suite                                       |
+ |  Copyright (C) 2012 - 2024  Claire Xenia Wolf <claire@yosyshq.com>         |
+ |  Distributed under an ISC-like license, type "license" to see terms        |
+ \----------------------------------------------------------------------------/
+ Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)
+Loaded SDC plugin
+
+1. Executing Liberty frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.ref/sky130_fd_sc_hd/lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+Imported 428 cell types from liberty file.
+[INFO] Using SDC file '/workspace/openlane/runs/RUN_2026-11-01_20-12-07/06-yosys-synthesis/synthesis.abc.sdc' for ABC…
+
+2. Executing Verilog-2005 frontend: /workspace/rtl/ethernet_fcs_checker.v
+Parsing SystemVerilog input from `/workspace/rtl/ethernet_fcs_checker.v' to AST representation.
+Storing AST representation for module `$abstract\ethernet_fcs_checker'.
+Successfully finished Verilog frontend.
+
+3. Executing Verilog-2005 frontend: /workspace/rtl/async_fifo.v
+Parsing SystemVerilog input from `/workspace/rtl/async_fifo.v' to AST representation.
+Storing AST representation for module `$abstract\async_fifo'.
+Successfully finished Verilog frontend.
+
+4. Executing HIERARCHY pass (managing design hierarchy).
+
+5. Executing AST frontend in derive mode using pre-parsed AST for module `\ethernet_fcs_checker'.
+Generating RTLIL representation for module `\ethernet_fcs_checker'.
+
+5.1. Analyzing design hierarchy..
+Top module:  \ethernet_fcs_checker
+Parameter \DATA_WIDTH = 10
+Parameter \DEPTH = 16
+Parameter \ADDR_WIDTH = 4
+
+5.2. Executing AST frontend in derive mode using pre-parsed AST for module `\async_fifo'.
+Parameter \DATA_WIDTH = 10
+Parameter \DEPTH = 16
+Parameter \ADDR_WIDTH = 4
+Generating RTLIL representation for module `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo'.
+Warning: Replacing memory \fifo_mem with list of registers. See /workspace/rtl/async_fifo.v:35
+
+5.3. Analyzing design hierarchy..
+Top module:  \ethernet_fcs_checker
+Used module:     $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo
+
+5.4. Analyzing design hierarchy..
+Top module:  \ethernet_fcs_checker
+Used module:     $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo
+Removing unused module `$abstract\async_fifo'.
+Removing unused module `$abstract\ethernet_fcs_checker'.
+Removed 2 unused modules.
+Renaming module ethernet_fcs_checker to ethernet_fcs_checker.
+
+6. Generating Graphviz representation of design.
+Writing dot description to `/workspace/openlane/runs/RUN_2026-11-01_20-12-07/06-yosys-synthesis/hierarchy.dot'.
+Dumping module ethernet_fcs_checker to page 1.
+
+7. Executing TRIBUF pass.
+
+8. Executing HIERARCHY pass (managing design hierarchy).
+
+8.1. Analyzing design hierarchy..
+Top module:  \ethernet_fcs_checker
+Used module:     $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo
+
+8.2. Analyzing design hierarchy..
+Top module:  \ethernet_fcs_checker
+Used module:     $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo
+Removed 0 unused modules.
+
+9. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Cleaned up 0 empty switches.
+
+10. Executing PROC_RMDEAD pass (remove dead branches from decision trees).
+Marked 2 switch rules as full_case in process $proc$/workspace/rtl/ethernet_fcs_checker.v:93$9 in module ethernet_fcs_checker.
+Removed 1 dead cases from process $proc$/workspace/rtl/async_fifo.v:0$261 in module $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.
+Marked 1 switch rules as full_case in process $proc$/workspace/rtl/async_fifo.v:0$261 in module $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.
+Marked 1 switch rules as full_case in process $proc$/workspace/rtl/async_fifo.v:40$257 in module $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.
+Marked 3 switch rules as full_case in process $proc$/workspace/rtl/async_fifo.v:31$247 in module $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.
+Removed a total of 1 dead cases.
+
+11. Executing PROC_PRUNE pass (remove redundant assignments in processes).
+Removed 2 redundant assignments.
+Promoted 39 assignments to connections.
+
+12. Executing PROC_INIT pass (extract init attributes).
+
+13. Executing PROC_ARST pass (detect async resets in processes).
+Found async reset \rst in `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+Found async reset \rst in `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:40$257'.
+Found async reset \rst in `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+
+14. Executing PROC_ROM pass (convert switches to ROMs).
+Converted 0 switches.
+<suppressed ~7 debug messages>
+
+15. Executing PROC_MUX pass (convert decision trees to multiplexers).
+Creating decoders for process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+Creating decoders for process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+     1/5: $0\fcs_error[0:0]
+     2/5: $0\fcs_valid[0:0]
+     3/5: $0\len_cnt[15:0]
+     4/5: $0\crc_reg[31:0]
+     5/5: $0\frame_len[15:0]
+Creating decoders for process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:0$261'.
+     1/1: $1$mem2reg_rd$\fifo_mem$/workspace/rtl/async_fifo.v:47$242_DATA[9:0]$263
+Creating decoders for process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:40$257'.
+     1/1: $0\rd_ptr[4:0]
+Creating decoders for process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+     1/21: $2$mem2reg_wr$\fifo_mem$/workspace/rtl/async_fifo.v:35$241_ADDR[3:0]$254
+     2/21: $2$mem2reg_wr$\fifo_mem$/workspace/rtl/async_fifo.v:35$241_DATA[9:0]$255
+     3/21: $1$mem2reg_wr$\fifo_mem$/workspace/rtl/async_fifo.v:35$241_DATA[9:0]$251
+     4/21: $1$mem2reg_wr$\fifo_mem$/workspace/rtl/async_fifo.v:35$241_ADDR[3:0]$250
+     5/21: $0\fifo_mem[15][9:0]
+     6/21: $0\fifo_mem[14][9:0]
+     7/21: $0\fifo_mem[13][9:0]
+     8/21: $0\fifo_mem[12][9:0]
+     9/21: $0\fifo_mem[11][9:0]
+    10/21: $0\fifo_mem[10][9:0]
+    11/21: $0\fifo_mem[9][9:0]
+    12/21: $0\fifo_mem[8][9:0]
+    13/21: $0\fifo_mem[7][9:0]
+    14/21: $0\fifo_mem[6][9:0]
+    15/21: $0\fifo_mem[5][9:0]
+    16/21: $0\fifo_mem[4][9:0]
+    17/21: $0\fifo_mem[3][9:0]
+    18/21: $0\fifo_mem[2][9:0]
+    19/21: $0\fifo_mem[1][9:0]
+    20/21: $0\fifo_mem[0][9:0]
+    21/21: $0\wr_ptr[4:0]
+
+16. Executing PROC_DLATCH pass (convert process syncs to latches).
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$1.$result' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$2.$result' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$2.d' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$2.c' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `\ethernet_fcs_checker.\next_crc32$func$/workspace/rtl/ethernet_fcs_checker.v:91$2.n' from process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+No latch inferred for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$mem2reg_rd$\fifo_mem$/workspace/rtl/async_fifo.v:47$242_DATA' from process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:0$261'.
+
+17. Executing PROC_DFF pass (convert process syncs to FFs).
+Creating register for signal `\ethernet_fcs_checker.\fcs_valid' using process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+  created $adff cell `$procdff$516' with positive edge clock and positive level reset.
+Creating register for signal `\ethernet_fcs_checker.\fcs_error' using process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+  created $adff cell `$procdff$519' with positive edge clock and positive level reset.
+Creating register for signal `\ethernet_fcs_checker.\frame_len' using process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+  created $adff cell `$procdff$522' with positive edge clock and positive level reset.
+Creating register for signal `\ethernet_fcs_checker.\crc_reg' using process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+  created $adff cell `$procdff$525' with positive edge clock and positive level reset.
+Creating register for signal `\ethernet_fcs_checker.\len_cnt' using process `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+  created $adff cell `$procdff$528' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\rd_ptr' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:40$257'.
+  created $adff cell `$procdff$531' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\wr_ptr' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $adff cell `$procdff$534' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[0]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$539' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[1]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$544' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[2]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$549' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[3]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$554' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[4]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$559' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[5]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$564' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[6]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$569' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[7]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$574' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[8]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$579' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[9]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$584' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[10]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$589' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[11]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$594' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[12]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$599' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[13]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$604' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[14]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$609' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.\fifo_mem[15]' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $dff cell `$procdff$614' with positive edge clock.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$mem2reg_wr$\fifo_mem$/workspace/rtl/async_fifo.v:35$241_ADDR' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $adff cell `$procdff$617' with positive edge clock and positive level reset.
+Creating register for signal `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$mem2reg_wr$\fifo_mem$/workspace/rtl/async_fifo.v:35$241_DATA' using process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+  created $adff cell `$procdff$620' with positive edge clock and positive level reset.
+
+18. Executing PROC_MEMWR pass (convert process memory writes to cells).
+
+19. Executing PROC_CLEAN pass (remove empty switches from decision trees).
+Removing empty process `ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:0$15'.
+Found and cleaned up 3 empty switches in `\ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+Removing empty process `ethernet_fcs_checker.$proc$/workspace/rtl/ethernet_fcs_checker.v:93$9'.
+Found and cleaned up 1 empty switch in `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:0$261'.
+Removing empty process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:0$261'.
+Found and cleaned up 1 empty switch in `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:40$257'.
+Removing empty process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:40$257'.
+Found and cleaned up 2 empty switches in `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+Removing empty process `$paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.$proc$/workspace/rtl/async_fifo.v:31$247'.
+Cleaned up 7 empty switches.
+
+20. Executing CHECK pass (checking for obvious problems).
+Checking module ethernet_fcs_checker...
+Checking module $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo...
+Found and reported 0 problems.
+
+21. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+<suppressed ~10 debug messages>
+Optimizing module $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.
+<suppressed ~22 debug messages>
+
+22. Executing FLATTEN pass (flatten design).
+Deleting now unused module $paramod$8e5600c12a67cd8ad825ce7c13727a1dd72be867\async_fifo.
+<suppressed ~1 debug messages>
+
+23. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+24. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 5 unused cells and 140 unused wires.
+<suppressed ~7 debug messages>
+
+25. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+26. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+<suppressed ~27 debug messages>
+Removed a total of 9 cells.
+
+27. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~25 debug messages>
+
+28. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+29. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+<suppressed ~3 debug messages>
+Removed a total of 1 cells.
+
+30. Executing OPT_DFF pass (perform DFF optimizations).
+
+31. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 0 unused cells and 10 unused wires.
+<suppressed ~1 debug messages>
+
+32. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+<suppressed ~2 debug messages>
+
+33. Rerunning OPT passes. (Maybe there is more to do…)
+
+34. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+35. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+36. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+37. Executing OPT_DFF pass (perform DFF optimizations).
+
+38. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 1 unused cells and 3 unused wires.
+<suppressed ~4 debug messages>
+
+39. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+40. Rerunning OPT passes. (Maybe there is more to do…)
+
+41. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+42. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+43. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+44. Executing OPT_DFF pass (perform DFF optimizations).
+
+45. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+46. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+47. Executing FSM pass (extract and optimize FSM).
+
+47.1. Executing FSM_DETECT pass (finding FSMs in design).
+
+47.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+
+47.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+47.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+47.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+47.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+47.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+47.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+48. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+49. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+50. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~26 debug messages>
+
+51. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+52. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+53. Executing OPT_DFF pass (perform DFF optimizations).
+Adding EN signal on $procdff$528 ($adff) from module ethernet_fcs_checker (D = $ternary$/workspace/rtl/ethernet_fcs_checker.v:106$11_Y, Q = \len_cnt).
+Adding EN signal on $procdff$525 ($adff) from module ethernet_fcs_checker (D = \crc_nxt, Q = \crc_reg).
+Adding EN signal on $procdff$522 ($adff) from module ethernet_fcs_checker (D = $ternary$/workspace/rtl/ethernet_fcs_checker.v:106$11_Y, Q = \frame_len).
+Adding EN signal on $flatten\fifo_inst.$procdff$614 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[15]).
+Adding EN signal on $flatten\fifo_inst.$procdff$609 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[14]).
+Adding EN signal on $flatten\fifo_inst.$procdff$604 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[13]).
+Adding EN signal on $flatten\fifo_inst.$procdff$599 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[12]).
+Adding EN signal on $flatten\fifo_inst.$procdff$594 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[11]).
+Adding EN signal on $flatten\fifo_inst.$procdff$589 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[10]).
+Adding EN signal on $flatten\fifo_inst.$procdff$584 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[9]).
+Adding EN signal on $flatten\fifo_inst.$procdff$579 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[8]).
+Adding EN signal on $flatten\fifo_inst.$procdff$574 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[7]).
+Adding EN signal on $flatten\fifo_inst.$procdff$569 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[6]).
+Adding EN signal on $flatten\fifo_inst.$procdff$564 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[5]).
+Adding EN signal on $flatten\fifo_inst.$procdff$559 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[4]).
+Adding EN signal on $flatten\fifo_inst.$procdff$554 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[3]).
+Adding EN signal on $flatten\fifo_inst.$procdff$549 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[2]).
+Adding EN signal on $flatten\fifo_inst.$procdff$544 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[1]).
+Adding EN signal on $flatten\fifo_inst.$procdff$539 ($dff) from module ethernet_fcs_checker (D = { \in_sop \in_eop \data_in }, Q = \fifo_inst.fifo_mem[0]).
+Adding EN signal on $flatten\fifo_inst.$procdff$534 ($adff) from module ethernet_fcs_checker (D = $flatten\fifo_inst.$add$/workspace/rtl/async_fifo.v:36$256_Y, Q = \fifo_inst.wr_ptr).
+Adding EN signal on $flatten\fifo_inst.$procdff$531 ($adff) from module ethernet_fcs_checker (D = $flatten\fifo_inst.$add$/workspace/rtl/async_fifo.v:44$260_Y, Q = \fifo_inst.rd_ptr).
+
+54. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 54 unused cells and 54 unused wires.
+<suppressed ~55 debug messages>
+
+55. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+56. Rerunning OPT passes. (Maybe there is more to do…)
+
+57. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+58. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+59. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+<suppressed ~45 debug messages>
+Removed a total of 15 cells.
+
+60. Executing OPT_DFF pass (perform DFF optimizations).
+
+61. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 0 unused cells and 15 unused wires.
+<suppressed ~1 debug messages>
+
+62. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+63. Rerunning OPT passes. (Maybe there is more to do…)
+
+64. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+65. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+66. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+67. Executing OPT_DFF pass (perform DFF optimizations).
+
+68. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+69. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+70. Executing WREDUCE pass (reducing word size of cells).
+Removed top 15 bits (of 16) from port B of cell ethernet_fcs_checker.$add$/workspace/rtl/ethernet_fcs_checker.v:106$10 ($add).
+Removed top 3 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$488_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$469_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$451_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$434_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$418_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$403_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$389_CMP0 ($eq).
+Removed top 3 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$301_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$300_CMP0 ($eq).
+Removed top 2 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$299_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$298_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$297_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$296_CMP0 ($eq).
+Removed top 1 bits (of 4) from port B of cell ethernet_fcs_checker.$flatten\fifo_inst.$procmux$295_CMP0 ($eq).
+
+71. Executing PEEPOPT pass (run peephole optimizers).
+
+72. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+73. Executing ALUMACC pass (create $alu and $macc cells).
+Extracting $alu and $macc cells in module ethernet_fcs_checker:
+  creating $macc model for $add$/workspace/rtl/ethernet_fcs_checker.v:106$10 ($add).
+  creating $macc model for $flatten\fifo_inst.$add$/workspace/rtl/async_fifo.v:36$256 ($add).
+  creating $macc model for $flatten\fifo_inst.$add$/workspace/rtl/async_fifo.v:44$260 ($add).
+  creating $alu model for $macc $flatten\fifo_inst.$add$/workspace/rtl/async_fifo.v:44$260.
+  creating $alu model for $macc $flatten\fifo_inst.$add$/workspace/rtl/async_fifo.v:36$256.
+  creating $alu model for $macc $add$/workspace/rtl/ethernet_fcs_checker.v:106$10.
+  creating $alu cell for $add$/workspace/rtl/ethernet_fcs_checker.v:106$10: $auto$alumacc.cc:485:replace_alu$711
+  creating $alu cell for $flatten\fifo_inst.$add$/workspace/rtl/async_fifo.v:36$256: $auto$alumacc.cc:485:replace_alu$714
+  creating $alu cell for $flatten\fifo_inst.$add$/workspace/rtl/async_fifo.v:44$260: $auto$alumacc.cc:485:replace_alu$717
+  created 3 $alu and 0 $macc cells.
+
+74. Executing SHARE pass (SAT-based resource sharing).
+
+75. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+76. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+77. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+78. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+79. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+80. Executing OPT_DFF pass (perform DFF optimizations).
+
+81. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+82. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+83. Executing MEMORY pass.
+
+83.1. Executing OPT_MEM pass (optimize memories).
+Performed a total of 0 transformations.
+
+83.2. Executing OPT_MEM_PRIORITY pass (removing unnecessary memory write priority relations).
+Performed a total of 0 transformations.
+
+83.3. Executing OPT_MEM_FEEDBACK pass (finding memory read-to-write feedback paths).
+
+83.4. Executing MEMORY_BMUX2ROM pass (converting muxes to ROMs).
+
+83.5. Executing MEMORY_DFF pass (merging $dff cells to $memrd).
+
+83.6. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+83.7. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+
+83.8. Executing OPT_MEM_WIDEN pass (optimize memories where all ports are wide).
+Performed a total of 0 transformations.
+
+83.9. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+83.10. Executing MEMORY_COLLECT pass (generating $mem cells).
+
+84. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+85. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+<suppressed ~5 debug messages>
+
+86. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+87. Executing OPT_DFF pass (perform DFF optimizations).
+
+88. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 1 unused cells and 2 unused wires.
+<suppressed ~2 debug messages>
+
+89. Executing MEMORY_MAP pass (converting memories to logic and flip-flops).
+
+90. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+91. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+92. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  Evaluating internal representation of mux trees.
+  Analyzing evaluation results.
+Removed 0 multiplexer ports.
+<suppressed ~5 debug messages>
+
+93. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+94. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+95. Executing OPT_SHARE pass.
+
+96. Executing OPT_DFF pass (perform DFF optimizations).
+
+97. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+98. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+99. Executing TECHMAP pass (map to technology primitives).
+
+99.1. Executing Verilog-2005 frontend: /nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v
+Parsing Verilog input from `/nix/store/9r0bh7sp051dpm8km8bqlb028anpd3v3-yosys/bin/../share/yosys/techmap.v' to AST representation.
+Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
+Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
+Generating RTLIL representation for module `\_90_simplemap_logic_ops'.
+Generating RTLIL representation for module `\_90_simplemap_compare_ops'.
+Generating RTLIL representation for module `\_90_simplemap_various'.
+Generating RTLIL representation for module `\_90_simplemap_registers'.
+Generating RTLIL representation for module `\_90_shift_ops_shr_shl_sshl_sshr'.
+Generating RTLIL representation for module `\_90_shift_shiftx'.
+Generating RTLIL representation for module `\_90_fa'.
+Generating RTLIL representation for module `\_90_lcu_brent_kung'.
+Generating RTLIL representation for module `\_90_alu'.
+Generating RTLIL representation for module `\_90_macc'.
+Generating RTLIL representation for module `\_90_alumacc'.
+Generating RTLIL representation for module `\$__div_mod_u'.
+Generating RTLIL representation for module `\$__div_mod_trunc'.
+Generating RTLIL representation for module `\_90_div'.
+Generating RTLIL representation for module `\_90_mod'.
+Generating RTLIL representation for module `\$__div_mod_floor'.
+Generating RTLIL representation for module `\_90_divfloor'.
+Generating RTLIL representation for module `\_90_modfloor'.
+Generating RTLIL representation for module `\_90_pow'.
+Generating RTLIL representation for module `\_90_pmux'.
+Generating RTLIL representation for module `\_90_demux'.
+Generating RTLIL representation for module `\_90_lut'.
+Successfully finished Verilog frontend.
+
+99.2. Continuing TECHMAP pass.
+Using extmapper simplemap for cells of type $adffe.
+Using extmapper simplemap for cells of type $reduce_and.
+Using extmapper simplemap for cells of type $logic_and.
+Using extmapper simplemap for cells of type $not.
+Using extmapper simplemap for cells of type $mux.
+Using template $paramod$672a140277c71df8314410f22acc08d55222c3c7\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $eq.
+Using extmapper simplemap for cells of type $xor.
+Using template $paramod$2af30114e9bd4ccb04dad757b3f0a8f6bf0615b0\_90_alu for cells of type $alu.
+Using extmapper simplemap for cells of type $and.
+Using extmapper simplemap for cells of type $adff.
+Using extmapper simplemap for cells of type $dffe.
+Using extmapper simplemap for cells of type $logic_not.
+Using template $paramod$b805400745e7bdef7cf11d3493d90aad72c699f3\_90_pmux for cells of type $pmux.
+Using extmapper simplemap for cells of type $ne.
+Using extmapper simplemap for cells of type $pos.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000010000 for cells of type $lcu.
+Using template $paramod\_90_lcu_brent_kung\WIDTH=32'00000000000000000000000000000101 for cells of type $lcu.
+Using extmapper simplemap for cells of type $reduce_or.
+Using extmapper simplemap for cells of type $or.
+No more expansions possible.
+<suppressed ~804 debug messages>
+
+100. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+<suppressed ~348 debug messages>
+
+101. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+<suppressed ~363 debug messages>
+Removed a total of 121 cells.
+
+102. Executing OPT_DFF pass (perform DFF optimizations).
+
+103. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 24 unused cells and 364 unused wires.
+<suppressed ~27 debug messages>
+
+104. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+105. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+106. Executing OPT_DFF pass (perform DFF optimizations).
+
+107. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+108. Executing ABC pass (technology mapping using ABC).
+
+108.1. Extracting gate netlist of module `\ethernet_fcs_checker' to `<abc-temp-dir>/input.blif'..
+Extracted 819 gates and 1041 wires to a netlist network with 220 inputs and 80 outputs.
+
+108.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f <abc-temp-dir>/abc.script 2>&1
+ABC: ABC command line: "source <abc-temp-dir>/abc.script".
+ABC: 
+ABC: + read_blif <abc-temp-dir>/input.blif 
+ABC: + read_library <abc-temp-dir>/stdcells.genlib 
+ABC: Entered genlib library with 13 gates from file "<abc-temp-dir>/stdcells.genlib".
+ABC: + strash 
+ABC: + dretime 
+ABC: + map 
+ABC: + write_blif <abc-temp-dir>/output.blif 
+
+108.1.2. Re-integrating ABC results.
+ABC RESULTS:               MUX cells:       10
+ABC RESULTS:               NOT cells:       39
+ABC RESULTS:             ORNOT cells:       14
+ABC RESULTS:                OR cells:      171
+ABC RESULTS:               NOR cells:       52
+ABC RESULTS:               AND cells:        6
+ABC RESULTS:              NAND cells:       39
+ABC RESULTS:            ANDNOT cells:      218
+ABC RESULTS:               XOR cells:      220
+ABC RESULTS:              XNOR cells:       21
+ABC RESULTS:        internal signals:      741
+ABC RESULTS:           input signals:      220
+ABC RESULTS:          output signals:       80
+Removing temp directory.
+
+109. Executing OPT pass (performing simple optimizations).
+
+109.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+109.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+109.3. Executing OPT_DFF pass (perform DFF optimizations).
+
+109.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 0 unused cells and 643 unused wires.
+<suppressed ~11 debug messages>
+
+109.5. Finished fast OPT passes.
+
+110. Executing HIERARCHY pass (managing design hierarchy).
+
+110.1. Analyzing design hierarchy..
+Top module:  \ethernet_fcs_checker
+
+110.2. Analyzing design hierarchy..
+Top module:  \ethernet_fcs_checker
+Removed 0 unused modules.
+
+111. Executing CHECK pass (checking for obvious problems).
+Checking module ethernet_fcs_checker...
+Found and reported 0 problems.
+
+112. Printing statistics.
+
+=== ethernet_fcs_checker ===
+
+   Number of wires:                789
+   Number of wire bits:           1143
+   Number of public wires:          38
+   Number of public wire bits:     376
+   Number of ports:                 10
+   Number of port bits:             32
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1027
+     $_ANDNOT_                     218
+     $_AND_                          6
+     $_DFFE_PP0P_                   42
+     $_DFFE_PP1P_                   32
+     $_DFFE_PP_                    160
+     $_DFF_PP0_                      2
+     $_MUX_                         10
+     $_NAND_                        39
+     $_NOR_                         52
+     $_NOT_                         39
+     $_ORNOT_                       14
+     $_OR_                         171
+     $_XNOR_                        21
+     $_XOR_                        220
+     $scopeinfo                      1
+
+113. Generating Graphviz representation of design.
+Writing dot description to `/workspace/openlane/runs/RUN_2026-11-01_20-12-07/06-yosys-synthesis/primitive_techmap.dot'.
+Dumping module ethernet_fcs_checker to page 1.
+
+114. Executing OPT pass (performing simple optimizations).
+
+114.1. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+114.2. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+114.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizer on module \ethernet_fcs_checker..
+  Creating internal representation of mux trees.
+  No muxes found in this module.
+Removed 0 multiplexer ports.
+
+114.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+  Optimizing cells in module \ethernet_fcs_checker.
+Performed a total of 0 changes.
+
+114.5. Executing OPT_MERGE pass (detect identical cells).
+Finding identical cells in module `\ethernet_fcs_checker'.
+Removed a total of 0 cells.
+
+114.6. Executing OPT_DFF pass (perform DFF optimizations).
+
+114.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+
+114.8. Executing OPT_EXPR pass (perform const folding).
+Optimizing module ethernet_fcs_checker.
+
+114.9. Finished OPT passes. (There is nothing left to do.)
+
+115. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 1 unused cells and 7 unused wires.
+<suppressed ~8 debug messages>
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /workspace/openlane/runs/RUN_2026-11-01_20-12-07/tmp/3d7433a109854e1e866cc4b70f6ffa1d.lib ",
+   "modules": {
+      "\\ethernet_fcs_checker": {
+         "num_wires":         782,
+         "num_wire_bits":     1049,
+         "num_pub_wires":     31,
+         "num_pub_wire_bits": 282,
+         "num_ports":         10,
+         "num_port_bits":     32,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1026,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 218,
+            "$_AND_": 6,
+            "$_DFFE_PP0P_": 42,
+            "$_DFFE_PP1P_": 32,
+            "$_DFFE_PP_": 160,
+            "$_DFF_PP0_": 2,
+            "$_MUX_": 10,
+            "$_NAND_": 39,
+            "$_NOR_": 52,
+            "$_NOT_": 39,
+            "$_ORNOT_": 14,
+            "$_OR_": 171,
+            "$_XNOR_": 21,
+            "$_XOR_": 220
+         }
+      }
+   },
+      "design": {
+         "num_wires":         782,
+         "num_wire_bits":     1049,
+         "num_pub_wires":     31,
+         "num_pub_wire_bits": 282,
+         "num_ports":         10,
+         "num_port_bits":     32,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1026,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 218,
+            "$_AND_": 6,
+            "$_DFFE_PP0P_": 42,
+            "$_DFFE_PP1P_": 32,
+            "$_DFFE_PP_": 160,
+            "$_DFF_PP0_": 2,
+            "$_MUX_": 10,
+            "$_NAND_": 39,
+            "$_NOR_": 52,
+            "$_NOT_": 39,
+            "$_ORNOT_": 14,
+            "$_OR_": 171,
+            "$_XNOR_": 21,
+            "$_XOR_": 220
+         }
+      }
+}
+
+116. Printing statistics.
+
+=== ethernet_fcs_checker ===
+
+   Number of wires:                782
+   Number of wire bits:           1049
+   Number of public wires:          31
+   Number of public wire bits:     282
+   Number of ports:                 10
+   Number of port bits:             32
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1026
+     $_ANDNOT_                     218
+     $_AND_                          6
+     $_DFFE_PP0P_                   42
+     $_DFFE_PP1P_                   32
+     $_DFFE_PP_                    160
+     $_DFF_PP0_                      2
+     $_MUX_                         10
+     $_NAND_                        39
+     $_NOR_                         52
+     $_NOT_                         39
+     $_ORNOT_                       14
+     $_OR_                         171
+     $_XNOR_                        21
+     $_XOR_                        220
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+   Area for cell type $_DFFE_PP_ is unknown!
+   Area for cell type $_DFF_PP0_ is unknown!
+   Area for cell type $_DFFE_PP0P_ is unknown!
+   Area for cell type $_DFFE_PP1P_ is unknown!
+
+[INFO] Applying tri-state buffer mapping from '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v'…
+
+117. Executing TECHMAP pass (map to technology primitives).
+
+117.1. Executing Verilog-2005 frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v
+Parsing Verilog input from `/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/tribuff_map.v' to AST representation.
+Generating RTLIL representation for module `\$_TBUF_'.
+Successfully finished Verilog frontend.
+
+117.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~3 debug messages>
+
+118. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+[INFO] Applying latch mapping from '/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v'…
+
+119. Executing TECHMAP pass (map to technology primitives).
+
+119.1. Executing Verilog-2005 frontend: /root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v
+Parsing Verilog input from `/root/.volare/volare/sky130/versions/0fe599b2afb6708d281543108caf8310912f54af/sky130A/libs.tech/openlane/sky130_fd_sc_hd/latch_map.v' to AST representation.
+Generating RTLIL representation for module `\$_DLATCH_P_'.
+Generating RTLIL representation for module `\$_DLATCH_N_'.
+Successfully finished Verilog frontend.
+
+119.2. Continuing TECHMAP pass.
+No more expansions possible.
+<suppressed ~4 debug messages>
+
+120. Executing SIMPLEMAP pass (map simple cells to gate primitives).
+
+121. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
+  cell sky130_fd_sc_hd__dfxtp_2 (noninv, pins=3, area=21.27) is a direct match for cell type $_DFF_P_.
+  cell sky130_fd_sc_hd__dfrtp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN0_.
+  cell sky130_fd_sc_hd__dfstp_2 (noninv, pins=4, area=26.28) is a direct match for cell type $_DFF_PN1_.
+  cell sky130_fd_sc_hd__dfbbn_2 (noninv, pins=6, area=35.03) is a direct match for cell type $_DFFSR_NNN_.
+  final dff cell mappings:
+    unmapped dff cell: $_DFF_N_
+    \sky130_fd_sc_hd__dfxtp_2 _DFF_P_ (.CLK( C), .D( D), .Q( Q));
+    unmapped dff cell: $_DFF_NN0_
+    unmapped dff cell: $_DFF_NN1_
+    unmapped dff cell: $_DFF_NP0_
+    unmapped dff cell: $_DFF_NP1_
+    \sky130_fd_sc_hd__dfrtp_2 _DFF_PN0_ (.CLK( C), .D( D), .Q( Q), .RESET_B( R));
+    \sky130_fd_sc_hd__dfstp_2 _DFF_PN1_ (.CLK( C), .D( D), .Q( Q), .SET_B( R));
+    unmapped dff cell: $_DFF_PP0_
+    unmapped dff cell: $_DFF_PP1_
+    \sky130_fd_sc_hd__dfbbn_2 _DFFSR_NNN_ (.CLK_N( C), .D( D), .Q( Q), .Q_N(~Q), .RESET_B( R), .SET_B( S));
+    unmapped dff cell: $_DFFSR_NNP_
+    unmapped dff cell: $_DFFSR_NPN_
+    unmapped dff cell: $_DFFSR_NPP_
+    unmapped dff cell: $_DFFSR_PNN_
+    unmapped dff cell: $_DFFSR_PNP_
+    unmapped dff cell: $_DFFSR_PPN_
+    unmapped dff cell: $_DFFSR_PPP_
+
+121.1. Executing DFFLEGALIZE pass (convert FFs to types supported by the target).
+Mapping DFF cells in module `\ethernet_fcs_checker':
+  mapped 44 $_DFF_PN0_ cells to \sky130_fd_sc_hd__dfrtp_2 cells.
+  mapped 32 $_DFF_PN1_ cells to \sky130_fd_sc_hd__dfstp_2 cells.
+  mapped 160 $_DFF_P_ cells to \sky130_fd_sc_hd__dfxtp_2 cells.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /workspace/openlane/runs/RUN_2026-11-01_20-12-07/tmp/3d7433a109854e1e866cc4b70f6ffa1d.lib ",
+   "modules": {
+      "\\ethernet_fcs_checker": {
+         "num_wires":         1092,
+         "num_wire_bits":     1359,
+         "num_pub_wires":     31,
+         "num_pub_wire_bits": 282,
+         "num_ports":         10,
+         "num_port_bits":     32,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1336,
+         "area":              5400.179200,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 218,
+            "$_AND_": 6,
+            "$_MUX_": 244,
+            "$_NAND_": 39,
+            "$_NOR_": 52,
+            "$_NOT_": 115,
+            "$_ORNOT_": 14,
+            "$_OR_": 171,
+            "$_XNOR_": 21,
+            "$_XOR_": 220,
+            "sky130_fd_sc_hd__dfrtp_2": 44,
+            "sky130_fd_sc_hd__dfstp_2": 32,
+            "sky130_fd_sc_hd__dfxtp_2": 160
+         }
+      }
+   },
+      "design": {
+         "num_wires":         1092,
+         "num_wire_bits":     1359,
+         "num_pub_wires":     31,
+         "num_pub_wire_bits": 282,
+         "num_ports":         10,
+         "num_port_bits":     32,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         1336,
+         "area":              5400.179200,
+         "num_cells_by_type": {
+            "$_ANDNOT_": 218,
+            "$_AND_": 6,
+            "$_MUX_": 244,
+            "$_NAND_": 39,
+            "$_NOR_": 52,
+            "$_NOT_": 115,
+            "$_ORNOT_": 14,
+            "$_OR_": 171,
+            "$_XNOR_": 21,
+            "$_XOR_": 220,
+            "sky130_fd_sc_hd__dfrtp_2": 44,
+            "sky130_fd_sc_hd__dfstp_2": 32,
+            "sky130_fd_sc_hd__dfxtp_2": 160
+         }
+      }
+}
+
+122. Printing statistics.
+
+=== ethernet_fcs_checker ===
+
+   Number of wires:               1092
+   Number of wire bits:           1359
+   Number of public wires:          31
+   Number of public wire bits:     282
+   Number of ports:                 10
+   Number of port bits:             32
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:               1336
+     $_ANDNOT_                     218
+     $_AND_                          6
+     $_MUX_                        244
+     $_NAND_                        39
+     $_NOR_                         52
+     $_NOT_                        115
+     $_ORNOT_                       14
+     $_OR_                         171
+     $_XNOR_                        21
+     $_XOR_                        220
+     sky130_fd_sc_hd__dfrtp_2       44
+     sky130_fd_sc_hd__dfstp_2       32
+     sky130_fd_sc_hd__dfxtp_2      160
+
+   Area for cell type $_NOT_ is unknown!
+   Area for cell type $_AND_ is unknown!
+   Area for cell type $_NAND_ is unknown!
+   Area for cell type $_OR_ is unknown!
+   Area for cell type $_NOR_ is unknown!
+   Area for cell type $_XOR_ is unknown!
+   Area for cell type $_XNOR_ is unknown!
+   Area for cell type $_ANDNOT_ is unknown!
+   Area for cell type $_ORNOT_ is unknown!
+   Area for cell type $_MUX_ is unknown!
+
+   Chip area for module '\ethernet_fcs_checker': 5400.179200
+     of which used for sequential elements: 5400.179200 (100.00%)
+
+[INFO] Using generated ABC script '/workspace/openlane/runs/RUN_2026-11-01_20-12-07/06-yosys-synthesis/AREA_0.abc'…
+
+123. Executing ABC pass (technology mapping using ABC).
+
+123.1. Extracting gate netlist of module `\ethernet_fcs_checker' to `/tmp/yosys-abc-7HwwPF/input.blif'..
+Extracted 1100 gates and 1346 wires to a netlist network with 246 inputs and 313 outputs.
+
+123.1.1. Executing ABC.
+Running ABC command: "/nix/store/6l3aj1gi4lja8z5s4lan2k2cfz9mqkrz-yosys-abc/bin/abc" -s -f /tmp/yosys-abc-7HwwPF/abc.script 2>&1
+ABC: ABC command line: "source /tmp/yosys-abc-7HwwPF/abc.script".
+ABC: 
+ABC: + read_blif /tmp/yosys-abc-7HwwPF/input.blif 
+ABC: + read_lib -w /workspace/openlane/runs/RUN_2026-11-01_20-12-07/tmp/3d7433a109854e1e866cc4b70f6ffa1d.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.09 sec
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfbbn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfrtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfsbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfstp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxbp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dfxtp_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_1".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_2".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtn_4".
+ABC: Scl_LibertyReadGenlib() skipped sequential cell "sky130_fd_sc_hd__dlxtp_1".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_2".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_4".
+ABC: Scl_LibertyReadGenlib() skipped three-state cell "sky130_fd_sc_hd__ebufn_8".
+ABC: Library "sky130_fd_sc_hd__tt_025C_1v80" from "/workspace/openlane/runs/RUN_2026-11-01_20-12-07/tmp/3d7433a109854e1e866cc4b70f6ffa1d.lib" has 175 cells (17 skipped: 14 seq; 3 tri-state; 0 no func; 0 dont_use).  Time =     0.11 sec
+ABC: Memory =    9.54 MB. Time =     0.11 sec
+ABC: Warning: Detected 2 multi-output gates (for example, "sky130_fd_sc_hd__fa_1").
+ABC: + read_constr -v /workspace/openlane/runs/RUN_2026-11-01_20-12-07/06-yosys-synthesis/synthesis.abc.sdc 
+ABC: Setting driving cell to be "sky130_fd_sc_hd__inv_2/Y".
+ABC: Setting output load to be 33.442001.
+ABC: + source /workspace/openlane/runs/RUN_2026-11-01_20-12-07/06-yosys-synthesis/AREA_0.abc 
+ABC: Error: The network is combinational.
+ABC: Cannot find the default PI driving cell (sky130_fd_sc_hd__inv_2/Y) in the library.
+ABC: WireLoad = "none"  Gates =    758 ( 10.3 %)   Cap = 17.0 ff (  8.5 %)   Area =     7718.65 ( 61.2 %)   Delay =  3991.03 ps  (  3.6 %)               
+ABC: Path  0 --      21 : 0   21 pi                       A =   0.00  Df =   0.0   -0.0 ps  S =   0.0 ps  Cin =  0.0 ff  Cout =  63.3 ff  Cmax =   0.0 ff  G =    0  
+ABC: Path  1 --     582 : 4   10 sky130_fd_sc_hd__and4b_2 A =  11.26  Df = 343.9  -72.3 ps  S = 158.2 ps  Cin =  1.6 ff  Cout =  25.1 ff  Cmax = 297.6 ff  G = 1523  
+ABC: Path  2 --     584 : 4    1 sky130_fd_sc_hd__a22o_2  A =  10.01  Df = 817.7 -288.0 ps  S =  44.6 ps  Cin =  2.3 ff  Cout =   1.5 ff  Cmax = 301.2 ff  G =   60  
+ABC: Path  3 --     593 : 4    2 sky130_fd_sc_hd__or4_2   A =   8.76  Df =1206.9 -269.6 ps  S = 117.0 ps  Cin =  1.5 ff  Cout =   6.9 ff  Cmax = 310.4 ff  G =  446  
+ABC: Path  4 --     608 : 4   36 sky130_fd_sc_hd__o22ai_2 A =  12.51  Df =2096.9 -806.5 ps  S =1155.3 ps  Cin =  4.3 ff  Cout = 105.1 ff  Cmax = 137.3 ff  G = 2360  
+ABC: Path  5 --     843 : 3    1 sky130_fd_sc_hd__and3_2  A =   7.51  Df =2483.6 -837.2 ps  S =  92.2 ps  Cin =  1.5 ff  Cout =   8.5 ff  Cmax = 309.5 ff  G =  549  
+ABC: Path  6 --     844 : 2    1 sky130_fd_sc_hd__xor2_2  A =  16.27  Df =2664.0 -650.0 ps  S = 176.4 ps  Cin =  8.6 ff  Cout =   9.0 ff  Cmax = 130.0 ff  G =  101  
+ABC: Path  7 --     848 : 2    3 sky130_fd_sc_hd__xnor2_2 A =  16.27  Df =2861.0 -357.3 ps  S = 163.4 ps  Cin =  8.5 ff  Cout =   8.3 ff  Cmax = 121.8 ff  G =   92  
+ABC: Path  8 --    1058 : 4    1 sky130_fd_sc_hd__or4bb_2 A =  12.51  Df =3496.4 -838.3 ps  S = 100.2 ps  Cin =  1.5 ff  Cout =   4.6 ff  Cmax = 312.2 ff  G =  289  
+ABC: Path  9 --    1060 : 4    1 sky130_fd_sc_hd__nor4_2  A =  12.51  Df =3741.3 -741.7 ps  S = 224.7 ps  Cin =  4.3 ff  Cout =   4.7 ff  Cmax =  64.1 ff  G =  102  
+ABC: Path 10 --    1061 : 4    1 sky130_fd_sc_hd__a31oi_2 A =  12.51  Df =3991.0 -224.1 ps  S = 486.9 ps  Cin =  4.4 ff  Cout =  33.4 ff  Cmax = 118.1 ff  G =  760  
+ABC: Start-point = pi20 (\fifo_inst.rd_ptr [0]).  End-point = po75 ($0\fcs_error[0:0]).
+ABC: netlist                       : i/o =  246/  313  lat =    0  nd =   758  edge =   2084  area =7719.21  delay =10.00  lev = 10
+ABC: + write_blif /tmp/yosys-abc-7HwwPF/output.blif 
+
+123.1.2. Re-integrating ABC results.
+ABC RESULTS:   sky130_fd_sc_hd__and4bb_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__a31o_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__o22ai_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o31ai_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__o21ba_2 cells:        4
+ABC RESULTS:   sky130_fd_sc_hd__a21bo_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__o21a_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__o21ai_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__o21bai_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__and2_2 cells:        8
+ABC RESULTS:   sky130_fd_sc_hd__a21o_2 cells:       21
+ABC RESULTS:   sky130_fd_sc_hd__nand3_2 cells:        6
+ABC RESULTS:   sky130_fd_sc_hd__and3_2 cells:       25
+ABC RESULTS:   sky130_fd_sc_hd__a21oi_2 cells:       17
+ABC RESULTS:   sky130_fd_sc_hd__xor2_2 cells:       42
+ABC RESULTS:   sky130_fd_sc_hd__xnor2_2 cells:       74
+ABC RESULTS:   sky130_fd_sc_hd__a221o_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__a211o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o221ai_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and3b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__nor3b_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__o22a_2 cells:        9
+ABC RESULTS:   sky130_fd_sc_hd__o211a_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand2_2 cells:       24
+ABC RESULTS:   sky130_fd_sc_hd__a22oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a22o_2 cells:       69
+ABC RESULTS:   sky130_fd_sc_hd__a211oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nand2b_2 cells:        2
+ABC RESULTS:   sky130_fd_sc_hd__nor4b_2 cells:        5
+ABC RESULTS:   sky130_fd_sc_hd__and4_2 cells:        7
+ABC RESULTS:   sky130_fd_sc_hd__or4bb_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__a2111o_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__nor4_2 cells:        3
+ABC RESULTS:   sky130_fd_sc_hd__a31oi_2 cells:        1
+ABC RESULTS:   sky130_fd_sc_hd__and4b_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__or3b_2 cells:       12
+ABC RESULTS:   sky130_fd_sc_hd__or4_2 cells:       26
+ABC RESULTS:   sky130_fd_sc_hd__or3_2 cells:       10
+ABC RESULTS:   sky130_fd_sc_hd__or2_2 cells:       19
+ABC RESULTS:   sky130_fd_sc_hd__nor2_2 cells:       21
+ABC RESULTS:   sky130_fd_sc_hd__mux2_1 cells:      214
+ABC RESULTS:   sky130_fd_sc_hd__inv_2 cells:       78
+ABC RESULTS:        internal signals:      787
+ABC RESULTS:           input signals:      246
+ABC RESULTS:          output signals:      313
+Removing temp directory.
+
+124. Executing SETUNDEF pass (replace undef values with defined constants).
+
+125. Executing HILOMAP pass (mapping to constant drivers).
+
+126. Executing SPLITNETS pass (splitting up multi-bit signals).
+
+127. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \ethernet_fcs_checker..
+Removed 0 unused cells and 1356 unused wires.
+<suppressed ~33 debug messages>
+
+128. Executing INSBUF pass (insert buffer cells for connected wires).
+
+129. Executing CHECK pass (checking for obvious problems).
+Checking module ethernet_fcs_checker...
+Found and reported 0 problems.
+{
+   "creator": "Yosys 0.46 (git sha1 e97731b9dda91fa5fa53ed87df7c34163ba59a41, clang++ 17.0.6 -fPIC -O3)",
+   "invocation": "stat -json -liberty /workspace/openlane/runs/RUN_2026-11-01_20-12-07/tmp/3d7433a109854e1e866cc4b70f6ffa1d.lib ",
+   "modules": {
+      "\\ethernet_fcs_checker": {
+         "num_wires":         985,
+         "num_wire_bits":     1007,
+         "num_pub_wires":     228,
+         "num_pub_wire_bits": 250,
+         "num_ports":         10,
+         "num_port_bits":     32,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         994,
+         "area":              13118.832000,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 1,
+            "sky130_fd_sc_hd__a211o_2": 1,
+            "sky130_fd_sc_hd__a211oi_2": 1,
+            "sky130_fd_sc_hd__a21bo_2": 5,
+            "sky130_fd_sc_hd__a21o_2": 21,
+            "sky130_fd_sc_hd__a21oi_2": 17,
+            "sky130_fd_sc_hd__a221o_2": 2,
+            "sky130_fd_sc_hd__a22o_2": 69,
+            "sky130_fd_sc_hd__a22oi_2": 1,
+            "sky130_fd_sc_hd__a31o_2": 3,
+            "sky130_fd_sc_hd__a31oi_2": 1,
+            "sky130_fd_sc_hd__and2_2": 8,
+            "sky130_fd_sc_hd__and3_2": 25,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 7,
+            "sky130_fd_sc_hd__and4b_2": 10,
+            "sky130_fd_sc_hd__and4bb_2": 6,
+            "sky130_fd_sc_hd__dfrtp_2": 44,
+            "sky130_fd_sc_hd__dfstp_2": 32,
+            "sky130_fd_sc_hd__dfxtp_2": 160,
+            "sky130_fd_sc_hd__inv_2": 78,
+            "sky130_fd_sc_hd__mux2_1": 214,
+            "sky130_fd_sc_hd__nand2_2": 24,
+            "sky130_fd_sc_hd__nand2b_2": 2,
+            "sky130_fd_sc_hd__nand3_2": 6,
+            "sky130_fd_sc_hd__nor2_2": 21,
+            "sky130_fd_sc_hd__nor3b_2": 1,
+            "sky130_fd_sc_hd__nor4_2": 3,
+            "sky130_fd_sc_hd__nor4b_2": 5,
+            "sky130_fd_sc_hd__o211a_2": 1,
+            "sky130_fd_sc_hd__o21a_2": 6,
+            "sky130_fd_sc_hd__o21ai_2": 10,
+            "sky130_fd_sc_hd__o21ba_2": 4,
+            "sky130_fd_sc_hd__o21bai_2": 2,
+            "sky130_fd_sc_hd__o221ai_2": 1,
+            "sky130_fd_sc_hd__o22a_2": 9,
+            "sky130_fd_sc_hd__o22ai_2": 2,
+            "sky130_fd_sc_hd__o31ai_2": 2,
+            "sky130_fd_sc_hd__or2_2": 19,
+            "sky130_fd_sc_hd__or3_2": 10,
+            "sky130_fd_sc_hd__or3b_2": 12,
+            "sky130_fd_sc_hd__or4_2": 26,
+            "sky130_fd_sc_hd__or4bb_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 74,
+            "sky130_fd_sc_hd__xor2_2": 42
+         }
+      }
+   },
+      "design": {
+         "num_wires":         985,
+         "num_wire_bits":     1007,
+         "num_pub_wires":     228,
+         "num_pub_wire_bits": 250,
+         "num_ports":         10,
+         "num_port_bits":     32,
+         "num_memories":      0,
+         "num_memory_bits":   0,
+         "num_processes":     0,
+         "num_cells":         994,
+         "area":              13118.832000,
+         "num_cells_by_type": {
+            "sky130_fd_sc_hd__a2111o_2": 1,
+            "sky130_fd_sc_hd__a211o_2": 1,
+            "sky130_fd_sc_hd__a211oi_2": 1,
+            "sky130_fd_sc_hd__a21bo_2": 5,
+            "sky130_fd_sc_hd__a21o_2": 21,
+            "sky130_fd_sc_hd__a21oi_2": 17,
+            "sky130_fd_sc_hd__a221o_2": 2,
+            "sky130_fd_sc_hd__a22o_2": 69,
+            "sky130_fd_sc_hd__a22oi_2": 1,
+            "sky130_fd_sc_hd__a31o_2": 3,
+            "sky130_fd_sc_hd__a31oi_2": 1,
+            "sky130_fd_sc_hd__and2_2": 8,
+            "sky130_fd_sc_hd__and3_2": 25,
+            "sky130_fd_sc_hd__and3b_2": 5,
+            "sky130_fd_sc_hd__and4_2": 7,
+            "sky130_fd_sc_hd__and4b_2": 10,
+            "sky130_fd_sc_hd__and4bb_2": 6,
+            "sky130_fd_sc_hd__dfrtp_2": 44,
+            "sky130_fd_sc_hd__dfstp_2": 32,
+            "sky130_fd_sc_hd__dfxtp_2": 160,
+            "sky130_fd_sc_hd__inv_2": 78,
+            "sky130_fd_sc_hd__mux2_1": 214,
+            "sky130_fd_sc_hd__nand2_2": 24,
+            "sky130_fd_sc_hd__nand2b_2": 2,
+            "sky130_fd_sc_hd__nand3_2": 6,
+            "sky130_fd_sc_hd__nor2_2": 21,
+            "sky130_fd_sc_hd__nor3b_2": 1,
+            "sky130_fd_sc_hd__nor4_2": 3,
+            "sky130_fd_sc_hd__nor4b_2": 5,
+            "sky130_fd_sc_hd__o211a_2": 1,
+            "sky130_fd_sc_hd__o21a_2": 6,
+            "sky130_fd_sc_hd__o21ai_2": 10,
+            "sky130_fd_sc_hd__o21ba_2": 4,
+            "sky130_fd_sc_hd__o21bai_2": 2,
+            "sky130_fd_sc_hd__o221ai_2": 1,
+            "sky130_fd_sc_hd__o22a_2": 9,
+            "sky130_fd_sc_hd__o22ai_2": 2,
+            "sky130_fd_sc_hd__o31ai_2": 2,
+            "sky130_fd_sc_hd__or2_2": 19,
+            "sky130_fd_sc_hd__or3_2": 10,
+            "sky130_fd_sc_hd__or3b_2": 12,
+            "sky130_fd_sc_hd__or4_2": 26,
+            "sky130_fd_sc_hd__or4bb_2": 1,
+            "sky130_fd_sc_hd__xnor2_2": 74,
+            "sky130_fd_sc_hd__xor2_2": 42
+         }
+      }
+}
+
+130. Printing statistics.
+
+=== ethernet_fcs_checker ===
+
+   Number of wires:                985
+   Number of wire bits:           1007
+   Number of public wires:         228
+   Number of public wire bits:     250
+   Number of ports:                 10
+   Number of port bits:             32
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                994
+     sky130_fd_sc_hd__a2111o_2       1
+     sky130_fd_sc_hd__a211o_2        1
+     sky130_fd_sc_hd__a211oi_2       1
+     sky130_fd_sc_hd__a21bo_2        5
+     sky130_fd_sc_hd__a21o_2        21
+     sky130_fd_sc_hd__a21oi_2       17
+     sky130_fd_sc_hd__a221o_2        2
+     sky130_fd_sc_hd__a22o_2        69
+     sky130_fd_sc_hd__a22oi_2        1
+     sky130_fd_sc_hd__a31o_2         3
+     sky130_fd_sc_hd__a31oi_2        1
+     sky130_fd_sc_hd__and2_2         8
+     sky130_fd_sc_hd__and3_2        25
+     sky130_fd_sc_hd__and3b_2        5
+     sky130_fd_sc_hd__and4_2         7
+     sky130_fd_sc_hd__and4b_2       10
+     sky130_fd_sc_hd__and4bb_2       6
+     sky130_fd_sc_hd__dfrtp_2       44
+     sky130_fd_sc_hd__dfstp_2       32
+     sky130_fd_sc_hd__dfxtp_2      160
+     sky130_fd_sc_hd__inv_2         78
+     sky130_fd_sc_hd__mux2_1       214
+     sky130_fd_sc_hd__nand2_2       24
+     sky130_fd_sc_hd__nand2b_2       2
+     sky130_fd_sc_hd__nand3_2        6
+     sky130_fd_sc_hd__nor2_2        21
+     sky130_fd_sc_hd__nor3b_2        1
+     sky130_fd_sc_hd__nor4_2         3
+     sky130_fd_sc_hd__nor4b_2        5
+     sky130_fd_sc_hd__o211a_2        1
+     sky130_fd_sc_hd__o21a_2         6
+     sky130_fd_sc_hd__o21ai_2       10
+     sky130_fd_sc_hd__o21ba_2        4
+     sky130_fd_sc_hd__o21bai_2       2
+     sky130_fd_sc_hd__o221ai_2       1
+     sky130_fd_sc_hd__o22a_2         9
+     sky130_fd_sc_hd__o22ai_2        2
+     sky130_fd_sc_hd__o31ai_2        2
+     sky130_fd_sc_hd__or2_2         19
+     sky130_fd_sc_hd__or3_2         10
+     sky130_fd_sc_hd__or3b_2        12
+     sky130_fd_sc_hd__or4_2         26
+     sky130_fd_sc_hd__or4bb_2        1
+     sky130_fd_sc_hd__xnor2_2       74
+     sky130_fd_sc_hd__xor2_2        42
+
+   Chip area for module '\ethernet_fcs_checker': 13118.832000
+     of which used for sequential elements: 5400.179200 (41.16%)
+
+131. Executing Verilog backend.
+Dumping module `\ethernet_fcs_checker'.
+
+132. Executing JSON backend.
